@@ -61,13 +61,11 @@ public class HW06_4110064229_1 extends MedianOfArrays {
         a[random] = a[end - 1];
         a[end - 1] = pivot;
 
-        int itr = start, jtr = end - 2;
+        int itr = start - 1, jtr = end - 1;
         while (true) {
-            while (a[itr] < pivot) { // 都不要有等號比較好
-                itr++;
+            while (a[++itr] < pivot) { // 都不要有等號比較好
             }
-            while (jtr != start && a[jtr] > pivot) { // 都不要有等號比較好
-                jtr--;
+            while (jtr != start && a[--jtr] > pivot) { // 都不要有等號比較好
             }
             if (itr >= jtr)
                 break;
