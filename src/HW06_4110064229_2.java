@@ -98,7 +98,9 @@ public class HW06_4110064229_2 extends MedianOfArrays {
         }
         int randomX = (int) (Math.random()*(end.x - start.x)) + start.x;
         int randomY;
-        if (randomX == start.x)
+        if (start.x == end.x)
+            randomY = (int) (Math.random()*(end.y - start.y)) + start.y;
+        else if (randomX == start.x)
             randomY = (int) (Math.random()*(a[start.x].length - start.y)) + start.y;
         else
             randomY = (int) (Math.random()*(a[randomX].length));
@@ -111,7 +113,7 @@ public class HW06_4110064229_2 extends MedianOfArrays {
         jtr.decrease();
         while (true) {
             while (itr.get() < pivot) { // 都不要有等號比較好
-                itr.increase();;
+                itr.increase();
             }
             while ((jtr.x != start.x || jtr.y != start.y) && jtr.get() > pivot) { // 都不要有等號比較好
                 jtr.decrease();;
@@ -121,6 +123,8 @@ public class HW06_4110064229_2 extends MedianOfArrays {
             int tmp = itr.get();
             itr.set(jtr.get());
             jtr.set(tmp);
+            itr.increase();
+            jtr.decrease();
         }
         end_minus1.set(itr.get());
         itr.set(pivot);
